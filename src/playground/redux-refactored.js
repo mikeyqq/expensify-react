@@ -27,13 +27,14 @@ import { createStore } from "redux";
 //   return a + b;
 // };
 
+/*********ACTION GENERATOR FOR INCREMENT****************************************************************************************************************************************************************/
+
 //PART 5. THIS IS THE SHORTER REFACTORED OF THE INCREMENTCOUNT COMPARED TO ABOVE
 //WE USED OBJECT DESTRUCTURING REPLACING PAYLOAD BECAUSE WE CAN ASSIGN THE ARGUMENT COMING IN TO ANY VARIABLE WE WANT, AND THEN CALLING ON THAT VARIABLE IN OUR STATEMENT
 const incrementCount = ({ incrementBy = 1 } = {}) => ({
   type: "INCREMENT",
   incrementBy
 });
-/*********************************************************************************** */
 
 /*********ACTION GENERATOR FOR DECREMENT****************************************************************************************************************************************************************/
 
@@ -48,7 +49,20 @@ const decrementCount = ({ decrementBy = 1 } = {}) => ({
   decrementBy
 });
 
-/*********ACTION GENERATOR FOR DECREMENT****************************************************************************************************************************************************************/
+/*********ACTION GENERATOR FOR RESET****************************************************************************************************************************************************************/
+
+const resetCount = () => ({
+  type: "RESET"
+});
+
+/*********ACTION GENERATOR FOR SET****************************************************************************************************************************************************************/
+
+const setCount = ({ count } = {}) => ({
+  type: "SET",
+  count
+});
+
+/*************************************************************************************************************************************************************************/
 
 const store = createStore((state = { count: 0 }, action) => {
   //YOU CAN USE SWITCH STATEMENT OR IF STATEMENT FOR THE ACTIONS COMING IN FROM DISPATCH
@@ -86,7 +100,7 @@ store.subscribe(() => {
 //logging the info in the state.
 console.log(store.getState());
 
-/************************************************************************** */
+/******************INCREMENT ACTION GENERATOR******************************************* */
 //PART 4.1 - REMOVING OLD inline object
 
 //CONVENTION TO USE ALL CAPS
@@ -103,11 +117,10 @@ store.dispatch(incrementCount({ incrementBy: 5 }));
 
 //THIS WILL INCREMENT BY THE DEFAULT PROVIDED IN THE ACTION GENERATOR SINCE WE ARE NOT PASSING ANY ARGUMEMNTS
 store.dispatch(incrementCount());
-/************************************************************************** */
 
-store.dispatch({
-  type: "RESET"
-});
+/******************RESET ACTION GENERATOR************************************************ */
+
+store.dispatch(resetCount());
 
 /******************DECREMENT ACTION GENERATOR****************************************************************************************************************************************************/
 
@@ -115,9 +128,6 @@ store.dispatch(decrementCount());
 
 store.dispatch(decrementCount({ decrementBy: 10 }));
 
-/*********DECREMENT ACTION GENERATOR****************************************************************************************************************************************************************/
+/*********SET ACTION GENERATOR****************************************************************************************************************************************************************/
 
-store.dispatch({
-  type: "SET",
-  count: 101
-});
+store.dispatch(setCount({ count: 101 }));
