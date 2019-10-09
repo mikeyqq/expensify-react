@@ -64,7 +64,8 @@ const setCount = ({ count } = {}) => ({
 
 /*************************************************************************************************************************************************************************/
 
-const store = createStore((state = { count: 0 }, action) => {
+//REDUCER EXAMPLE -> reducers are pure function. Output is determine by the input. If it depends on global variable, then its not a pure function.
+const countReducer = (state = { count: 0 }, action) => {
   //YOU CAN USE SWITCH STATEMENT OR IF STATEMENT FOR THE ACTIONS COMING IN FROM DISPATCH
   switch (action.type) {
     case "INCREMENT":
@@ -88,7 +89,9 @@ const store = createStore((state = { count: 0 }, action) => {
     default:
       return state;
   }
-});
+};
+
+const store = createStore(countReducer);
 
 //This will run everytime there is an change to the store.
 //This will log out all 4 dispatch everytime the dispatch runs.
