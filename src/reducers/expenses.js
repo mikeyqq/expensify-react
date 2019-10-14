@@ -1,8 +1,8 @@
 //THIS IS A DEFAULT STATE FOR EXPENSES REDUCER
-const expenseReducerDefaultState = [];
+const expensesReducerDefaultState = [];
 
 //TO KEEP STATE CLEAN, WE CREATED A DEFAULT STATE FOR THE STATE IN THIS FUNCTION
-export default (state = expenseReducerDefaultState, action) => {
+export default (state = expensesReducerDefaultState, action) => {
   switch (action.type) {
     case "ADD_EXPENSE":
       return [...state, action.expense];
