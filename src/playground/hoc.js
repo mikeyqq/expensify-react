@@ -7,6 +7,7 @@
 
 import React from "react";
 
+//THIS IS A NON HOC COMPONENT
 const Info = props => (
   <div>
     <h1>info</h1>
@@ -14,13 +15,22 @@ const Info = props => (
   </div>
 );
 
+//THIS IS A HOC COMPONENT BECAUSE IT RENDERS ANOTHER COMPONENT
 const withAdminWarning = WrappedComponent => {
   return props => (
     <div>
-      <p>This is private info, Please don't share!</p>
-      <WrappedComponent />
+      {props.isAdmin && <p>This is private info, Please don't share!</p>}
+      <WrappedComponent {...props} />
     </div>
   );
 };
 
+const requireAuthentication = WrappedComponent => {
+  return props => (
+    <div>{props.isAuthenticated ? <WrappedComponent {...props} /> : <p>Please Login to view the info)</p>}</div>
+  );
+};
+
+//THIS IS CALLING THE COMPONENT YOU WANT TO RENDER --> Info component
 const AdminInfo = withAdminWarning(Info);
+const AuthInfo = requireAuthentication(Info);
