@@ -5,9 +5,6 @@ import "react-dates/lib/css/_datepicker.css";
 
 // const date = new Date();
 
-const now = moment();
-console.log(now.format("MMM Do, YYYY")); //Oct 14th, 2019
-
 export default class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
@@ -30,11 +27,10 @@ export default class ExpenseForm extends React.Component {
     const note = e.target.value;
     this.setState(() => ({ note }));
   };
-
   onAmountChange = e => {
     const amount = e.target.value;
 
-    if (!amount || amount.match(/^\d(1,)(\.\d{0,2})?$/)) {
+    if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState(() => ({ amount }));
     }
   };

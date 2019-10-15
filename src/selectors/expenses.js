@@ -1,8 +1,6 @@
 import moment from "moment";
 
-/***************** FILTERING THROUGH REDUX DATA ************************************************************** */
-
-//GET VISIBLE EXPENSES
+// Get visible expenses
 
 export default (expenses, { text, sortBy, startDate, endDate }) => {
   return expenses

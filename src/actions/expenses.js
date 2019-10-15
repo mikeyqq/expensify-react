@@ -1,6 +1,6 @@
 import uuid from "uuid";
 
-//ACTION GENERATOR FOR ADD EXPENSE
+// ADD_EXPENSE
 export const addExpense = ({ description = "", note = "", amount = 0, createdAt = 0 } = {}) => ({
   type: "ADD_EXPENSE",
   expense: {
@@ -12,21 +12,15 @@ export const addExpense = ({ description = "", note = "", amount = 0, createdAt 
   }
 });
 
-//ACTION GENERATOR FOR REMOVE EXPENSE
-
+// REMOVE_EXPENSE
 export const removeExpense = ({ id } = {}) => ({
   type: "REMOVE_EXPENSE",
-  expense: {
-    id
-  }
+  id
 });
 
-//ACTION GENERATOR FOR REMOVE EXPENSE
-
-export const editExpense = ({ id, updates } = {}) => ({
+// EDIT_EXPENSE
+export const editExpense = (id, updates) => ({
   type: "EDIT_EXPENSE",
-  expense: {
-    id,
-    updates
-  }
+  id,
+  updates
 });
