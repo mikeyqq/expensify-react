@@ -1,5 +1,14 @@
+import moment from "moment";
+
 //THIS IS A DEFAULT STATE FOR FILTERS REDUCER
-const filtersReducerDefaultState = { text: "", sortBy: "date", startDate: undefined, endDate: undefined };
+const filtersReducerDefaultState = {
+  text: "",
+  sortBy: "date",
+  startDate: moment().startOf("month"),
+  endDate: moment().endOf("month")
+};
+
+// const filtersReducerDefaultState = { text: "", sortBy: "date", startDate: undefined, endDate: undefined };
 
 //TO KEEP STATE CLEAN, WE CREATED A DEFAULT STATE FOR THE STATE IN THIS FUNCTION
 export default (state = filtersReducerDefaultState, action) => {
